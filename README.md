@@ -10,7 +10,7 @@ The platform also supports **multiplayer quizzes**, enabling users to compete wi
 
 ### 1. **Landing Page (quizex.app)**
 
-- **Folder Name:** `quizex_landing_page`
+- **Folder Name:** `landingpage`
 - **Tech Stack:** Next.js
 - **Description:** The landing page serves as the public face of Quizex. It provides an overview of the platform, its features, and includes all necessary legal documents such as terms of service, privacy policy, and other relevant information. The use of Next.js ensures fast loading times and SEO optimization, which is crucial for attracting and retaining users.
 
