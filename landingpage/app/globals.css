@@ -3,25 +3,28 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+    background-image: url("noise.png");
+    background-repeat: repeat;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    background-image: url("noise.png");
+    background-repeat: repeat;
   }
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+.btn {
+  @apply hover:rounded-xl rounded-lg duration-300 border-2 border-black font-mono font-semibold px-3 text-black m-auto py-1.5;
 }
