@@ -5,6 +5,7 @@ import { FaRegCirclePlay } from "react-icons/fa6";
 import { useInView } from "react-intersection-observer";
 import { MdQuestionMark } from "react-icons/md";
 import { GrDiamond } from "react-icons/gr";
+import Link from "next/link";
 
 export default function Home() {
   const [ref1, inView1] = useInView({ triggerOnce: false, threshold: 0.5 });
@@ -68,12 +69,12 @@ export default function Home() {
               }}
               className="btn ring-2 ring-black bg-purple-200"
             >
-              <a
+              <Link
                 href="https://play.quizex.app/"
                 className="flex items-center gap-2 font-mono text-xl sm:text-2xl"
               >
                 <FaRegCirclePlay size={32} color="black" /> Play
-              </a>
+              </Link>
             </motion.button>
           </motion.div>
         </div>
@@ -117,7 +118,7 @@ export default function Home() {
           wrapper="div"
           speed={60}
           cursor={false}
-          className={`text-3xl sm:text-6xl  text-gray-800 font-extrabold  z-50
+          className={`text-3xl sm:text-6xl  text-gray-800 font-extrabold  z-40
             tracking-widest `}
         />
 
@@ -125,7 +126,7 @@ export default function Home() {
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.9, duration: 0.3 }}
-          className="text-lg sm:text-2xl text-gray-700 text-center max-w-3xl z-50"
+          className="text-lg sm:text-2xl text-gray-700 text-center max-w-3xl z-40"
         >
           Quizex is an AI-driven learning platform that not only helps users
           create smart notes with AI assistance but also generates quizzes based
@@ -175,7 +176,7 @@ export default function Home() {
           wrapper="div"
           speed={60}
           cursor={false}
-          className={`text-3xl sm:text-6xl  text-gray-800 font-extrabold z-50
+          className={`text-3xl sm:text-6xl  text-gray-800 font-extrabold z-40
             tracking-widest `}
         />
 
@@ -183,7 +184,7 @@ export default function Home() {
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8, duration: 0.3 }}
-          className="text-lg sm:text-2xl text-gray-700 text-center max-w-3xl z-50"
+          className="text-lg sm:text-2xl text-gray-700 text-center max-w-3xl z-40"
         >
           The Premium plan on Quizex unlocks a variety of extra features to
           elevate your learning experience. While the standard plan only allows
