@@ -5,6 +5,8 @@ import Link from "next/link";
 import { FiMenu, FiX } from "react-icons/fi";
 import { useInView } from "react-intersection-observer";
 import { usePathname } from "next/navigation";
+import { Logo } from "./Logo";
+import { links } from "@/links";
 
 export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -44,30 +46,25 @@ export const Navbar = () => {
         <motion.h1
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 2 }}
-          className=" flex-none tracking-wider font-mono text-4xl
-             underline decoration-teal-300   font-bold"
+          transition={{ duration: 0.5, delay: 1.5 }}
         >
           {!isHomePage ? (
-            <Link href="/" className="">
-              Quizex
-            </Link>
+            <Logo />
           ) : (
-            <Link href="/" className="opacity-0">
-              Quizex
-            </Link>
+            <div className="opacity-0">
+              <Logo />
+            </div>
           )}
         </motion.h1>
 
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 2 }}
+          transition={{ duration: 0.5, delay: 1.2 }}
           className="hidden md:flex gap-2 sm:gap-4  items-center font-extralight tracking-widest"
         >
           <Link href="/pricing">Pricing</Link>
-          <Link href="/documents">Documents</Link>
-          <Link href="https://play.quizex.app">Dashboard</Link>
+          <Link href={links.app}>Dashboard</Link>
         </motion.div>
 
         <div className="md:hidden flex items-center">
@@ -93,9 +90,8 @@ export const Navbar = () => {
             <Link href="/pricing" onClick={toggleMenu}>
               Pricing
             </Link>
-            <Link href="/documents">Documents</Link>
 
-            <Link href="https://play.quizex.app" onClick={toggleMenu}>
+            <Link href={links.app} onClick={toggleMenu}>
               Dashboard
             </Link>
           </div>

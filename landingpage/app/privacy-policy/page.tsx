@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { Section, TableRow } from "@/components/DocumentElements";
+import { Section, TableRow } from "@/components/DocumentsCompontents";
 
 export default function Home() {
   const companyName = "Quizex";
@@ -7,7 +7,9 @@ export default function Home() {
   const contactEmail = "support@quizex.com";
 
   return (
-    <>
+    <main className="max-w-4xl w-full m-auto p-2 min-h-[72vh]">
+      <div className="mt-20"></div>
+
       <h1 className="text-2xl font-bold mb-4">Privacy Policy</h1>
       <p className="text-sm text-gray-600">Effective: {effectiveDate}</p>
 
@@ -113,9 +115,9 @@ export default function Home() {
             of our Service.
           </p>
 
-          <table className="w-full border-collapse">
+          <table className="w-full border-collapse my-6">
             <thead>
-              <tr className="bg-gray-50">
+              <tr className="">
                 <th className="p-3 text-left">Purpose</th>
                 <th className="p-3 text-left">Provider</th>
               </tr>
@@ -171,6 +173,6 @@ export default function Home() {
           </p>
         </Section>
       </div>
-    </>
+    </main>
   );
 }

@@ -6,6 +6,7 @@ import { useInView } from "react-intersection-observer";
 import { MdQuestionMark } from "react-icons/md";
 import { GrDiamond } from "react-icons/gr";
 import Link from "next/link";
+import { links } from "@/links";
 
 export default function Home() {
   const [ref1, inView1] = useInView({ triggerOnce: false, threshold: 0.5 });
@@ -70,7 +71,7 @@ export default function Home() {
               className="btn ring-2 ring-black bg-purple-200"
             >
               <Link
-                href="https://play.quizex.app/"
+                href={links.app}
                 className="flex items-center gap-2 font-mono text-xl sm:text-2xl"
               >
                 <FaRegCirclePlay size={32} color="black" /> Play

@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { Section } from "@/components/DocumentElements";
+import { Section } from "@/components/DocumentsCompontents";
 import Link from "next/link";
 
 export default function Home() {
@@ -7,7 +7,9 @@ export default function Home() {
   const effectiveDate = "April 1, 2025";
 
   return (
-    <>
+    <main className="max-w-4xl w-full m-auto p-2 min-h-[72vh]">
+      <div className="mt-20"></div>
+
       <h1 className="text-2xl font-bold mb-4">{appName} Terms of Service</h1>
       <p className="text-sm text-gray-600">Effective: {effectiveDate}</p>
 
@@ -92,6 +94,6 @@ export default function Home() {
           </p>
         </Section>
       </div>
-    </>
+    </main>
   );
 }
