@@ -48,10 +48,10 @@ export const DocsList = () => {
       </li>
       <li>
         <Link
-          href={links.landingPage + "/payment-policy"}
+          href={links.landingPage + "/payments-policy"}
           className="text-blue-800"
         >
-          Payment Policy
+          Payments Policy
         </Link>
       </li>
     </ul>
