@@ -149,7 +149,7 @@ export default function Home() {
       >
         <motion.div
           initial={{ opacity: 0, y: -60, scale: 0 }}
-          animate={{ opacity: 1, y: 0, scale: 1, rotate: 0 }}
+          animate={{ opacity: 1, y: 0, scale: 1, rotate: -20 }}
           transition={{ delay: 1.0, duration: 0.4 }}
           className="hidden sm:block text-sky-200  absolute bottom-48 -left-10"
         >
@@ -157,7 +157,7 @@ export default function Home() {
         </motion.div>
         <motion.div
           initial={{ opacity: 0, x: 60, y: -60, scale: 0 }}
-          animate={{ opacity: 1, x: 0, y: 0, scale: 1, rotate: 0 }}
+          animate={{ opacity: 1, x: 0, y: 0, scale: 1, rotate: -2 }}
           transition={{ delay: 1.1, duration: 0.3 }}
           className="hidden sm:block text-sky-200  absolute bottom-20 right-64"
         >
@@ -165,8 +165,8 @@ export default function Home() {
         </motion.div>
         <motion.div
           initial={{ opacity: 0, x: 60, y: -70, scale: 0 }}
-          animate={{ opacity: 1, x: 0, y: 0, scale: 1, rotate: 0 }}
-          transition={{ delay: 1.1, duration: 0.4, ease: "backInOut" }}
+          animate={{ opacity: 1, x: 0, y: 0, scale: 1, rotate: 10 }}
+          transition={{ delay: 1.2, duration: 0.4, ease: "backInOut" }}
           className="hidden sm:block text-sky-200 absolute top-64 right-0"
         >
           <GrDiamond size={180} />

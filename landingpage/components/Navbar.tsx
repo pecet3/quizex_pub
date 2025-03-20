@@ -63,6 +63,7 @@ export const Navbar = () => {
           transition={{ duration: 0.5, delay: 1.2 }}
           className="hidden md:flex gap-2 sm:gap-4  items-center font-extralight tracking-widest"
         >
+          <Link href="/about">About</Link>
           <Link href="/pricing">Pricing</Link>
           <Link href={links.app}>Dashboard</Link>
         </motion.div>
@@ -83,14 +84,16 @@ export const Navbar = () => {
           animate={{ y: 0 }}
           exit={{ height: 0 }}
           transition={{ duration: 0.5 }}
-          className="md:hidden text-2xl font-ibm-plex backdrop-blur-md bg-black bg-opacity-40 
+          className="md:hidden text-2xl font-ibm-plex backdrop-blur-md bg-black bg-opacity-15 
           w-full fixed top-0 z-40 py-8 pt-16 px-6"
         >
-          <div className="flex flex-col items-center space-y-4 text-white">
+          <div className="flex flex-col items-center space-y-4">
+            <Link href="/about" onClick={toggleMenu}>
+              About
+            </Link>
             <Link href="/pricing" onClick={toggleMenu}>
               Pricing
             </Link>
-
             <Link href={links.app} onClick={toggleMenu}>
               Dashboard
             </Link>
