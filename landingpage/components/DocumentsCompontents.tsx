@@ -33,7 +33,7 @@ export const DocsList = () => {
       <li>
         <Link
           href={links.landingPage + "/terms-of-service"}
-          className="text-blue-800"
+          className="text-blue-700"
         >
           Terms of Service
         </Link>
@@ -41,7 +41,7 @@ export const DocsList = () => {
       <li>
         <Link
           href={links.landingPage + "/privacy-policy"}
-          className="text-blue-800"
+          className="text-blue-700"
         >
           Privacy Policy
         </Link>
@@ -49,7 +49,7 @@ export const DocsList = () => {
       <li>
         <Link
           href={links.landingPage + "/payments-policy"}
-          className="text-blue-800"
+          className="text-blue-700"
         >
           Payments Policy
         </Link>
