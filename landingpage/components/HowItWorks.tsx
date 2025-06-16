@@ -8,6 +8,7 @@ import { useInView } from "react-intersection-observer";
 import { useEffect, useLayoutEffect } from "react";
 import { LoadingAnimation } from "./LoadingAnimation";
 import { Dashboard } from "./Dashboard";
+import { SettingsForm } from "./SettingsForm";
 
 export const HowItWorks = () => {
   const controlBrowser = useAnimation();
@@ -45,8 +46,8 @@ export const HowItWorks = () => {
   const controlFinal = useAnimation();
 
   const finalStepVariants = {
-    visible: { opacity: 1, scale: 1 },
-    hidden: { opacity: 0, scale: 1 },
+    visible: { opacity: 1, scale: 1, y: 0 },
+    hidden: { opacity: 0, scale: 0, y: -400 },
   };
   const finalButtonVariants = {
     clicked: { opacity: 1, scale: [1, 0.9, 1] },
@@ -88,7 +89,7 @@ export const HowItWorks = () => {
         <div className="flex md:flex-row flex-col w-full  justify-between items-end my-0 gap-0">
           <div
             className="flex flex-col w-full md:w-auto items-center justify-center
-           bg-black bg-opacity-30 rounded-2xl mt-4"
+           rounded-2xl mt-4"
           >
             <span className="flex m-auto items-center translate-x-4 -translate-y-6">
               <motion.div
@@ -160,7 +161,7 @@ export const HowItWorks = () => {
             </span>
           </div>
           <h3 className="text-center italic font-thin m-auto text-5xl p-2">
-            1. Select your notes to the game
+            1. Select the notes used <br /> in the Quiz
           </h3>
         </div>
         <Image
@@ -171,24 +172,34 @@ export const HowItWorks = () => {
           className="brightness-0 rounded-xl h-32 w-32 self-center opacity-80 mr-40"
         />
         <div
-          ref={refBrowser}
-          className="flex md:flex-row flex-col-reverse justify-center 
-        gap-12 items-center m-auto w-full"
+          className="flex flex-row-reverse justify-center 
+        items-center m-auto w-full"
         >
-          <h3 className="text-left font-light text-4xl m-0 ">
-            2. Start training and wait <br></br>~30min for the complete
-          </h3>
-          {"   "}
-          <motion.div
-            variants={browserVariants}
-            initial="hidden"
-            animate={controlBrowser}
-            whileInView="visible"
-            transition={{ duration: 2, ease: "easeOut" }}
-            className="scale-150"
-          >
-            <LoadingAnimation />
-          </motion.div>
+          <div className="flex gap-2">
+            <h3 className="text-center font-light text-4xl m-0 ">
+              2. Set up the game
+            </h3>
+            <div
+              ref={refBrowser}
+              className="flex justify-evenly flex-col items-end m-auto"
+            >
+              <h3 className="text-center font-light text-2xl m-0 ">
+                then wait a while for <br />
+                AI Quiz Generator
+              </h3>
+              <motion.div
+                variants={browserVariants}
+                initial="hidden"
+                animate={controlBrowser}
+                whileInView="visible"
+                transition={{ duration: 1, ease: "easeOut" }}
+                className=""
+              >
+                <LoadingAnimation />
+              </motion.div>
+            </div>
+            <SettingsForm />
+          </div>
         </div>
         <Image
           alt=""
@@ -199,19 +210,20 @@ export const HowItWorks = () => {
         />
         <div className="flex flex-col-reverse md:flex-col items-center m-auto">
           <h3 className="text-center font-extrabold text-4xl m-auto my-6">
-            3. Voilà, Your game is ready!
+            3. Voilà, the game is ready <br />
+            and you can with your friends!
           </h3>
-          <div ref={finalRef} className="w-full"></div>
-
-          <motion.div
-            variants={finalStepVariants}
-            initial="hidden"
-            animate={controlFinal}
-            transition={{ duration: 0.7, delay: 1 }}
-            className="rounded-xl  border-2 "
-          >
-            <Dashboard />
-          </motion.div>
+          <div ref={finalRef} className="w-full">
+            <motion.div
+              variants={finalStepVariants}
+              initial="hidden"
+              animate={controlFinal}
+              transition={{ duration: 0.7, delay: 1 }}
+              className="rounded-xl  border-2 "
+            >
+              <Dashboard />
+            </motion.div>
+          </div>
         </div>
       </div>
     </section>

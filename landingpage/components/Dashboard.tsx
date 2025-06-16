@@ -12,11 +12,10 @@ export const LittlePaperWrapper = ({
 }) => {
   return (
     <div
-      className="paper paper-yellow m-auto
+      className="bg-yellow-100 m-auto
      shadow-md shadow-gray-100 max-w-sm"
     >
-      <div className="top-tape"></div>
-      <div className="pt-10 p-2"> {children}</div>
+      <div className="p-2"> {children}</div>
     </div>
   );
 };
@@ -70,11 +69,27 @@ const defaultGameState: GameState = {
   actions: [],
   score: [
     {
-      is_answered: false,
+      is_answered: true,
       points: 0,
       rounds_won: [0],
       user: {
-        name: "",
+        name: "Jakub",
+        created_at: new Date(),
+        image_url: "",
+        is_draft: false,
+        uuid: "",
+        exp: 0,
+        level: 0,
+        progress: 0,
+        has_premium: false,
+      },
+    },
+    {
+      is_answered: true,
+      points: 0,
+      rounds_won: [0],
+      user: {
+        name: "Wiktor",
         created_at: new Date(),
         image_url: "",
         is_draft: false,
@@ -105,7 +120,7 @@ export const Dashboard: React.FC<{}> = ({}) => {
   const serverMessage = "Have a good game";
   const timer = 30;
   return (
-    <div className="m-0 sm:m-auto max-w-3xl text-lg flex flex-col">
+    <div className="scale-100 m-0 sm:m-auto max-w-3xl text-lg flex flex-col">
       <div className="flex justify-between gap-2 z-10 m-0">
         {settings.category !== "" ? (
           <div className="text-2xl flex sm:flex-row flex-col items-center font-bold font-mono bg-gray-400 rounded-t-md p-1 border-2 border-black border-b-0">

@@ -25,6 +25,44 @@ body {
   }
 }
 
+.paper {
+  position: relative;
+  background: linear-gradient(to bottom right,
+      var(--paper-dark),
+      20%,
+      var(--transparent)),
+    var(--paper-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  margin: 0;
+}
+
+.top-tape {
+  position: absolute;
+  height: 4vmin;
+  top: -5px;
+  width: 110%;
+  background-color: var(--tape-gray);
+  border-right: 1px dotted var(--tape-edge-gray);
+  border-left: 1px dotted var(--tape-edge-gray);
+  opacity: 0.5;
+}
+
 .btn {
   @apply hover:rounded-xl rounded-lg duration-300 border-2 border-black font-mono font-semibold px-3 text-black m-auto py-1.5;
+}
+.cartoon-container {
+  @apply w-full max-w-md bg-white border border-black p-6 rounded-md shadow-md flex flex-col gap-2
+}
+
+
+.cartoon-container-transparent {
+  @apply w-full max-w-md border border-black p-6 rounded-md shadow-md flex flex-col gap-2
+}
+
+
+.cartoon-input {
+  @apply bg-gray-200 w-full border border-black rounded-md p-2 font-mono m-0
 }
