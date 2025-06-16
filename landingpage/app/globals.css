@@ -3,13 +3,13 @@
 @tailwind utilities;
 
 :root {
-    background-image: url("noise.png");
-    background-repeat: repeat;
+  background-image: url("../public/noise.png");
+  background-repeat: repeat;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    background-image: url("noise.png");
+    background-image: url("../public/noise.png");
     background-repeat: repeat;
   }
 }

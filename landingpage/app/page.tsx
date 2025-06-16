@@ -7,6 +7,7 @@ import { MdQuestionMark } from "react-icons/md";
 import { GrDiamond } from "react-icons/gr";
 import Link from "next/link";
 import { links } from "@/links";
+import { HowItWorks } from "@/components/HowItWorks";
 
 export default function Home() {
   const [ref1, inView1] = useInView({ triggerOnce: false, threshold: 0.5 });
@@ -138,7 +139,7 @@ export default function Home() {
           enjoyable experience!
         </motion.p>
       </motion.section>
-
+      <HowItWorks />
       <motion.section
         ref={ref3}
         key={inView3.toString() + "b"}
