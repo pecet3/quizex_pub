@@ -5,6 +5,12 @@
 :root {
   background-image: url("../public/noise.png");
   background-repeat: repeat;
+  -moz-osx-font-smoothing: grayscale;
+    --pink: #ecb2ba;
+    --pink-dark: #c6939a;
+    --tape-gray: #dbd8be;
+    --tape-edge-gray: #b7b49d;
+    --transparent: rgba(255, 255, 255, 0);
 }
 
 @media (prefers-color-scheme: dark) {
