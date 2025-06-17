@@ -15,7 +15,7 @@ export default function Home() {
   const [ref3, inView3] = useInView({ triggerOnce: false, threshold: 0.5 });
 
   return (
-    <main className="flex flex-col items-center justify-center mb-32">
+    <main className=" flex flex-col items-center justify-center mb-32">
       <motion.section
         ref={ref1}
         initial={{ opacity: 0, y: 50 }}

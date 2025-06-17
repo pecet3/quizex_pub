@@ -211,7 +211,7 @@ export const HowItWorks = () => {
         <div className="flex flex-col-reverse md:flex-col items-center m-auto">
           <h3 className="text-center font-extrabold text-4xl m-auto my-6">
             3. Voilà, the game is ready <br />
-            and you can with your friends!
+            and you can play with your friends!
           </h3>
           <div ref={finalRef} className="w-full">
             <motion.div
