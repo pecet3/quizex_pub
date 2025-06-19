@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { motion, useAnimation } from "framer-motion";
+import { LoadingAnimation } from "./LoadingAnimation";
 interface Note {
   uuid: string;
   title: string;
@@ -35,7 +37,25 @@ const defaultNotes: Note[] = [
 
 export const SettingsForm: React.FC<{}> = ({}) => {
   const [category, setCategory] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const finalStepVariants = {
+    visible: { opacity: 1, scale: 1 },
+    hidden: { opacity: 0, scale: 1 },
+  };
+  const finalButtonVariants = {
+    clicked: { opacity: 1, scale: [1, 0.9, 1] },
+  };
+  const controlFinal = useAnimation();
   const pickedNotes: Note[] = defaultNotes;
+  useEffect(() => {
+    setTimeout(() => {
+      controlFinal.start("visible");
+      controlFinal.start("clicked");
+    }, 2000);
+    setTimeout(() => {
+      setIsLoading(true);
+    }, 5000);
+  }, [controlFinal]);
   return (
     <>
       <form
@@ -44,6 +64,7 @@ export const SettingsForm: React.FC<{}> = ({}) => {
       >
         <div className="bg-slate-300 flex flex-col gap-2 p-2 rounded-md border border-black">
           <input
+            value={"Lorem ipsum"}
             type="text"
             id="nameInput"
             name="roomName"
@@ -52,10 +73,10 @@ export const SettingsForm: React.FC<{}> = ({}) => {
             required
           />
           <input
+            value={"Lorem ipsum"}
             type="text"
             id="categoryInput"
             name="category"
-            value={category}
             onChange={(e) => setCategory(e.target.value)}
             className="cartoon-input"
             placeholder="Quiz Category"
@@ -209,9 +230,19 @@ export const SettingsForm: React.FC<{}> = ({}) => {
             (The room won't appear on the room list)
           </p>
         </div>
-        <button type="submit" className="btn bg-teal-200">
-          Create
-        </button>
+        {isLoading ? (
+          <LoadingAnimation />
+        ) : (
+          <motion.button
+            initial="hidden"
+            variants={finalButtonVariants}
+            animate={controlFinal}
+            transition={{ duration: 0.7, delay: 2 }}
+            className="btn bg-teal-200"
+          >
+            Create
+          </motion.button>
+        )}
       </form>
     </>
   );

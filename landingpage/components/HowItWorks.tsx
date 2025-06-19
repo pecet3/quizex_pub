@@ -14,7 +14,7 @@ export const HowItWorks = () => {
   const controlBrowser = useAnimation();
   const [refBrowser, inViewBrowser] = useInView();
   const browserVariants = {
-    visible: { opacity: 1, scale: [0, 2.5, 2] },
+    visible: { opacity: 1, scale: [0, 1] },
     hidden: { opacity: 0, scale: 0 },
   };
   useEffect(() => {
@@ -161,7 +161,7 @@ export const HowItWorks = () => {
             </span>
           </div>
           <h3 className="text-center italic font-thin m-auto text-5xl p-2">
-            1. Select the notes used <br /> in the Quiz
+            1. Select notes used <br /> in the Quiz
           </h3>
         </div>
         <Image
@@ -175,30 +175,28 @@ export const HowItWorks = () => {
           className="flex flex-row-reverse justify-center 
         items-center m-auto w-full"
         >
-          <div className="flex gap-2">
-            <h3 className="text-center font-light text-4xl m-0 ">
+          {" "}
+          {/* <h3 className="text-center font-light text-2xl m-0 ">
+            then wait a while for <br />
+            AI Quiz Generator
+          </h3> */}
+          <div
+            ref={refBrowser}
+            className=" ml-72 flex flex-col justify-end items-center gap-4 m-auto w-full"
+          >
+            <h3 className="text-center font-light text-4xl m-0">
               2. Set up the game
             </h3>
-            <div
-              ref={refBrowser}
-              className="flex justify-evenly flex-col items-end m-auto"
+            <motion.div
+              variants={browserVariants}
+              initial="hidden"
+              animate={controlBrowser}
+              whileInView="visible"
+              transition={{ duration: 1, ease: "easeOut" }}
+              className="self-center"
             >
-              <h3 className="text-center font-light text-2xl m-0 ">
-                then wait a while for <br />
-                AI Quiz Generator
-              </h3>
-              <motion.div
-                variants={browserVariants}
-                initial="hidden"
-                animate={controlBrowser}
-                whileInView="visible"
-                transition={{ duration: 1, ease: "easeOut" }}
-                className=""
-              >
-                <LoadingAnimation />
-              </motion.div>
-            </div>
-            <SettingsForm />
+              <SettingsForm />
+            </motion.div>
           </div>
         </div>
         <Image

@@ -50,11 +50,11 @@ export const Navbar = () => {
         >
           {!isHomePage ? (
             <Logo />
-          ) : (
+          ) : isVisible ? (
             <div className="opacity-0">
               <Logo />
             </div>
-          )}
+          ) : null}
         </motion.h1>
 
         <motion.div
