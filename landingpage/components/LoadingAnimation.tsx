@@ -11,7 +11,7 @@ export const LoadingAnimation = ({
   minorText?: string;
 }) => {
   return (
-    <div className="gap-1 flex  flex-col items-center ">
+    <div className="gap-1 flex  flex-col items-center scale-150 my-4">
       <div className="flex items-center gap-2 mr-10">
         <motion.div
           color={"black"}

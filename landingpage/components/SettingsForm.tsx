@@ -51,13 +51,13 @@ export const SettingsForm: React.FC<{}> = ({}) => {
     setTimeout(() => {
       controlFinal.start("visible");
       controlFinal.start("clicked");
-    }, 2000);
+    }, 3000);
     setTimeout(() => {
       setIsLoading(true);
-    }, 5000);
+    }, 7000);
   }, [controlFinal]);
   return (
-    <>
+    <div className="flex  flex-col-reverse items-center gap-2">
       <form
         id="settingsForm"
         className="cartoon-container-transparent bg-amber-100 text-center"
@@ -230,20 +230,17 @@ export const SettingsForm: React.FC<{}> = ({}) => {
             (The room won't appear on the room list)
           </p>
         </div>
-        {isLoading ? (
-          <LoadingAnimation />
-        ) : (
-          <motion.button
-            initial="hidden"
-            variants={finalButtonVariants}
-            animate={controlFinal}
-            transition={{ duration: 0.7, delay: 2 }}
-            className="btn bg-teal-200"
-          >
-            Create
-          </motion.button>
-        )}
+
+        <motion.button
+          initial="hidden"
+          variants={finalButtonVariants}
+          animate={controlFinal}
+          transition={{ duration: 0.7, delay: 2 }}
+          className="btn bg-teal-200"
+        >
+          Create
+        </motion.button>
       </form>
-    </>
+    </div>
   );
 };

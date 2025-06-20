@@ -14,8 +14,8 @@ export const HowItWorks = () => {
   const controlBrowser = useAnimation();
   const [refBrowser, inViewBrowser] = useInView();
   const browserVariants = {
-    visible: { opacity: 1, scale: [0, 1] },
-    hidden: { opacity: 0, scale: 0 },
+    visible: { opacity: 1, scale: [0, 1], x: 0 },
+    hidden: { opacity: 0, scale: 0, x: 300 },
   };
   useEffect(() => {
     if (inView) {
@@ -46,8 +46,8 @@ export const HowItWorks = () => {
   const controlFinal = useAnimation();
 
   const finalStepVariants = {
-    visible: { opacity: 1, scale: 1, y: 0 },
-    hidden: { opacity: 0, scale: 0, y: -400 },
+    visible: { opacity: 1, scale: 1, y: 0, rotate: 0 },
+    hidden: { opacity: 0, scale: 0, y: -200, rotate: [-360] },
   };
   const finalButtonVariants = {
     clicked: { opacity: 1, scale: [1, 0.9, 1] },
@@ -91,7 +91,7 @@ export const HowItWorks = () => {
             className="flex flex-col w-full md:w-auto items-center justify-center
            rounded-2xl mt-4"
           >
-            <span className="flex m-auto items-center translate-x-4 -translate-y-6">
+            <span className="flex m-auto items-center ">
               <motion.div
                 ref={ref}
                 variants={image1Variants}
@@ -100,18 +100,10 @@ export const HowItWorks = () => {
                 whileInView="visible1"
                 whileHover={{ scale: 1.03, y: -15 }}
                 transition={{ duration: 0.5 }}
-                className="h-auto right-10 bg-gray-300 shadow-lg
-                 shadow-black 
-                p-1 rounded-xl 
-              pb-6"
+                className="bg-gray-300 shadow-lg shadow-black 
+                 p-1 rounded-xl pb-6 w-24 sm:w-44  h-32 sm:h-52"
               >
-                <Image
-                  alt=""
-                  src={"/noise.png"}
-                  height={400}
-                  width={400}
-                  className="rounded-md h-40 w-32"
-                />
+                test
               </motion.div>
               <motion.div
                 ref={ref}
@@ -125,16 +117,10 @@ export const HowItWorks = () => {
                 }}
                 transition={{ duration: 0.5 }}
                 className="bg-gray-300 shadow-lg shadow-black 
-                 p-1 z-30 rounded-xl pb-6
+                 p-1 z-30 rounded-xl pb-6 w-28 sm:w-52 h-40 sm:h-64 
               "
               >
-                <Image
-                  alt=""
-                  src={"/noise.png"}
-                  height={400}
-                  width={400}
-                  className="rounded-md h-60 w-48 "
-                />
+                test
               </motion.div>
               <motion.div
                 ref={ref}
@@ -147,16 +133,10 @@ export const HowItWorks = () => {
                   y: -20,
                 }}
                 transition={{ duration: 0.5 }}
-                className=" bg-gray-300 shadow-lg
-                 shadow-black p-1 rounded-xl pb-6 "
+                className=" bg-gray-300 shadow-lg shadow-black 
+                 p-1 rounded-xl pb-6 w-24 sm:w-44  h-32 sm:h-52"
               >
-                <Image
-                  alt=""
-                  src={"/noise.png"}
-                  height={400}
-                  width={400}
-                  className="rounded-md h-40 w-40"
-                />
+                test
               </motion.div>
             </span>
           </div>
@@ -172,6 +152,7 @@ export const HowItWorks = () => {
           className="brightness-0 rounded-xl h-32 w-32 self-center opacity-80 mr-40"
         />
         <div
+          ref={refBrowser}
           className="flex flex-row-reverse justify-center 
         items-center m-auto w-full"
         >
@@ -180,11 +161,8 @@ export const HowItWorks = () => {
             then wait a while for <br />
             AI Quiz Generator
           </h3> */}
-          <div
-            ref={refBrowser}
-            className=" ml-72 flex flex-col justify-end items-center gap-4 m-auto w-full"
-          >
-            <h3 className="text-center font-light text-4xl m-0">
+          <div className=" sm:ml-96 flex flex-col justify-end items-center gap-4 m-auto w-full">
+            <h3 className="text-center font-light text-5xl m-0">
               2. Set up the game
             </h3>
             <motion.div
@@ -199,14 +177,29 @@ export const HowItWorks = () => {
             </motion.div>
           </div>
         </div>
-        <Image
-          alt=""
-          src={"/arrow_w.png"}
-          height={400}
-          width={400}
-          className="brightness-0 rounded-xl -rotate-12 h-48 w-48 self-center opacity-90 mt-4 "
-        />
-        <div className="flex flex-col-reverse md:flex-col items-center m-auto">
+        <div className="m-auto mb-24 mt-12 pl-32">
+          <motion.div
+            variants={browserVariants}
+            initial="hidden"
+            animate={controlBrowser}
+            whileInView="visible"
+            transition={{ duration: 1, ease: "easeOut" }}
+            className="self-center mb-8"
+          >
+            <h4 className={` duration-300 text-2xl w-64 text-center`}>
+              Then wait a while for AI Quiz Generator
+            </h4>
+            <LoadingAnimation />
+          </motion.div>
+          <Image
+            alt=""
+            src={"/arrow_w.png"}
+            height={400}
+            width={400}
+            className="brightness-0 rounded-xl -rotate-12 h-48 w-48 self-center opacity-90 mt-4 "
+          />
+        </div>
+        <div className="flex flex-col items-center m-auto">
           <h3 className="text-center font-extrabold text-4xl m-auto my-6">
             3. Voilà, the game is ready <br />
             and you can play with your friends!
@@ -216,7 +209,8 @@ export const HowItWorks = () => {
               variants={finalStepVariants}
               initial="hidden"
               animate={controlFinal}
-              transition={{ duration: 0.7, delay: 1 }}
+              whileInView="visible"
+              transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
               className="rounded-xl  border-2 "
             >
               <Dashboard />
