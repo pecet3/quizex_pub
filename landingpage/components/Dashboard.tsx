@@ -1,4 +1,4 @@
-import React, { useState, FormEvent } from "react";
+import React, { useState, FormEvent, useEffect } from "react";
 
 import { RxLapTimer } from "react-icons/rx";
 import { IoCheckmark } from "react-icons/io5";
@@ -118,12 +118,22 @@ export const Dashboard: React.FC<{}> = ({}) => {
   const settings = defaultSettings;
   const gameState = defaultGameState;
   const serverMessage = "Have a good game";
-  const timer = 30;
+  const [timer, setTimer] = useState(30);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTimer((prev) => (prev > 0 ? prev - 1 : 30));
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
   return (
     <div className="scale-100 m-0 sm:m-auto max-w-3xl text-lg flex flex-col">
       <div className="flex justify-between gap-2 z-10 m-0">
         {settings.category !== "" ? (
-          <div className="text-2xl flex sm:flex-row flex-col items-center font-bold font-mono bg-gray-400 rounded-t-md p-1 border-2 border-black border-b-0">
+          <div
+            className="text-2xl flex sm:flex-row flex-col items-center font-bold font-mono bg-gray-400 rounded-t-md p-1 border-2
+           border-black border-b-0"
+          >
             <p className="text-blue-800 italic">{settings.category}</p>
           </div>
         ) : null}

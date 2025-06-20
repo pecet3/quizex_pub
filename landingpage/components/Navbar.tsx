@@ -48,13 +48,7 @@ export const Navbar = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 1.5 }}
         >
-          {!isHomePage ? (
-            <Logo />
-          ) : isVisible ? (
-            <div className="opacity-0">
-              <Logo />
-            </div>
-          ) : null}
+          {!isHomePage ? <Logo /> : isVisible ? <Logo /> : null}
         </motion.h1>
 
         <motion.div

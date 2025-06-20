@@ -14,8 +14,8 @@ export const HowItWorks = () => {
   const controlBrowser = useAnimation();
   const [refBrowser, inViewBrowser] = useInView();
   const browserVariants = {
-    visible: { opacity: 1, scale: [0, 1], x: 0 },
-    hidden: { opacity: 0, scale: 0, x: 300 },
+    visible: { opacity: 1, scale: 1, x: 0, y: 0 },
+    hidden: { opacity: 0, scale: 1, x: 0, y: [-200] },
   };
   useEffect(() => {
     if (inView) {
@@ -45,9 +45,14 @@ export const HowItWorks = () => {
 
   const controlFinal = useAnimation();
 
+  const loading = useAnimation();
+  const loadingVariants = {
+    visible: { opacity: 1, scale: 1 },
+    hidden: { opacity: 0, scale: 0 },
+  };
   const finalStepVariants = {
     visible: { opacity: 1, scale: 1, y: 0, rotate: 0 },
-    hidden: { opacity: 0, scale: 0, y: -200, rotate: [-360] },
+    hidden: { opacity: 0, scale: 0, y: -200, rotate: [-180] },
   };
   const finalButtonVariants = {
     clicked: { opacity: 1, scale: [1, 0.9, 1] },
@@ -100,10 +105,20 @@ export const HowItWorks = () => {
                 whileInView="visible1"
                 whileHover={{ scale: 1.03, y: -15 }}
                 transition={{ duration: 0.5 }}
-                className="bg-gray-300 shadow-lg shadow-black 
-                 p-1 rounded-xl pb-6 w-24 sm:w-44  h-32 sm:h-52"
+                className="hover:cursor-pointer bg-slate-100 hover:shadow-lg
+                 hover:shadow-black duration-100
+                 shadow-md shadow-black 
+                 p-1 rounded- pb-6 w-24 sm:w-44  h-32 sm:h-52 rounded-tr-xl"
               >
-                test
+                <p className="text-sm font-bold border-b border-black">
+                  Memory managment
+                </p>
+                <p className="text-xs">
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos
+                  saepe reprehenderit dolor sit tempora modi repudiandae,
+                  dolores itaque, quis sunt in fuga porro quas. Atque porro nemo
+                  consequatur soluta distinctio?
+                </p>
               </motion.div>
               <motion.div
                 ref={ref}
@@ -116,11 +131,23 @@ export const HowItWorks = () => {
                   y: -30,
                 }}
                 transition={{ duration: 0.5 }}
-                className="bg-gray-300 shadow-lg shadow-black 
-                 p-1 z-30 rounded-xl pb-6 w-28 sm:w-52 h-40 sm:h-64 
+                className="hover:cursor-pointer bg-slate-100  hover:shadow-lg hover:shadow-black duration-100
+                 shadow-md shadow-black 
+                 p-1 z-30  pb-6 w-28 sm:w-52 h-40 sm:h-64   rounded-tr-xl
               "
               >
-                test
+                <p className="text-sm border-b border-black font-bold">
+                  Memory managment
+                </p>
+                <p className="text-xs">
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos
+                  saepe reprehenderit dolor sit tempora modi repudiandae,
+                  dolores itaque, quis sunt in fuga porro quas. Atque porro nemo
+                  consequatur soluta distinctio?saepe reprehenderit dolor sit
+                  tempora modi repudiandae, dolores itaque, quis sunt in
+                  fugasaepe reprehenderit dolor sit tempora modi repudiandae,
+                  dolores itaque, quis sunt in fuga
+                </p>
               </motion.div>
               <motion.div
                 ref={ref}
@@ -133,15 +160,27 @@ export const HowItWorks = () => {
                   y: -20,
                 }}
                 transition={{ duration: 0.5 }}
-                className=" bg-gray-300 shadow-lg shadow-black 
-                 p-1 rounded-xl pb-6 w-24 sm:w-44  h-32 sm:h-52"
+                className="hover:cursor-pointer bg-slate-100  hover:shadow-lg hover:shadow-black duration-100
+                 shadow-md shadow-black  rounded-tr-xl
+                p-1 rounded- pb-6 w-24 sm:w-44  h-32 sm:h-52"
               >
-                test
+                <p className="text-sm font-bold border-b border-black">
+                  Memory managment
+                </p>
+                <p className="text-xs">
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos
+                  saepe reprehenderit dolor sit tempora modi repudiandae,
+                  dolores itaque, quis sunt in fuga porro quas. Atque porro nemo
+                  consequatur soluta distinctio?
+                </p>
               </motion.div>
             </span>
           </div>
-          <h3 className="text-center italic font-thin m-auto text-5xl p-2">
-            1. Select notes used <br /> in the Quiz
+          <h3
+            className="text-center italic underline underline-offset-4 
+           decoration-fuchsia-400 font-thin m-auto text-5xl p-2"
+          >
+            1. Select notes to use <br /> in the Quiz
           </h3>
         </div>
         <Image
@@ -161,8 +200,11 @@ export const HowItWorks = () => {
             then wait a while for <br />
             AI Quiz Generator
           </h3> */}
-          <div className=" sm:ml-96 flex flex-col justify-end items-center gap-4 m-auto w-full">
-            <h3 className="text-center font-light text-5xl m-0">
+          <div className=" sm:ml-96 flex flex-col justify-end items-center gap-8 m-auto w-full">
+            <h3
+              className="italic underline underline-offset-4  decoration-sky-500 
+            text-center font-light text-5xl m-0"
+            >
               2. Set up the game
             </h3>
             <motion.div
@@ -170,37 +212,51 @@ export const HowItWorks = () => {
               initial="hidden"
               animate={controlBrowser}
               whileInView="visible"
-              transition={{ duration: 1, ease: "easeOut" }}
+              transition={{ duration: 1, ease: "easeOut", delay: 0.5 }}
               className="self-center"
             >
               <SettingsForm />
             </motion.div>
           </div>
         </div>
-        <div className="m-auto mb-24 mt-12 pl-32">
+        <div className="m-auto mb-12 pl-32">
+          <Image
+            alt=""
+            src={"/arrow_drawing.png"}
+            height={400}
+            width={400}
+            className="brightness-0  translate-x-32 rotate-12 rounded-xl h-32 w-32 
+            self-center opacity-80 "
+          />
           <motion.div
-            variants={browserVariants}
+            variants={loadingVariants}
             initial="hidden"
-            animate={controlBrowser}
+            animate={loading}
             whileInView="visible"
-            transition={{ duration: 1, ease: "easeOut" }}
-            className="self-center mb-8"
+            transition={{ duration: 0.4, ease: "easeOut" }}
+            className="self-center mb-8 py-8"
           >
-            <h4 className={` duration-300 text-2xl w-64 text-center`}>
+            <h4 className={`italic duration-300 text-2xl w-80 text-center`}>
               Then wait a while for AI Quiz Generator
             </h4>
-            <LoadingAnimation />
+            <motion.div animate={{ scale: 1.5 }} className="mt-8">
+              <LoadingAnimation />
+            </motion.div>
           </motion.div>
           <Image
             alt=""
             src={"/arrow_w.png"}
             height={400}
             width={400}
-            className="brightness-0 rounded-xl -rotate-12 h-48 w-48 self-center opacity-90 mt-4 "
+            className="brightness-0 rounded-xl -rotate-12 
+            h-48 w-48 self-center opacity-90 "
           />
         </div>
-        <div className="flex flex-col items-center m-auto">
-          <h3 className="text-center font-extrabold text-4xl m-auto my-6">
+        <div className="flex flex-col gap-8 items-center m-auto">
+          <h3
+            className="text-center italic underline underline-offset-4 
+           decoration-emerald-400 font-thin m-auto text-5xl p-2"
+          >
             3. Voilà, the game is ready <br />
             and you can play with your friends!
           </h3>
@@ -211,7 +267,7 @@ export const HowItWorks = () => {
               animate={controlFinal}
               whileInView="visible"
               transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
-              className="rounded-xl  border-2 "
+              className=" "
             >
               <Dashboard />
             </motion.div>
