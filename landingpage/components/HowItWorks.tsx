@@ -219,7 +219,7 @@ export const HowItWorks = () => {
             </motion.div>
           </div>
         </div>
-        <div className="m-auto mb-12 pl-32">
+        <div className="m-auto pl-32">
           <Image
             alt=""
             src={"/arrow_drawing.png"}
@@ -234,9 +234,12 @@ export const HowItWorks = () => {
             animate={loading}
             whileInView="visible"
             transition={{ duration: 0.4, ease: "easeOut" }}
-            className="self-center mb-8 py-8"
+            className="self-center  py-8"
           >
-            <h4 className={`italic duration-300 text-2xl w-80 text-center`}>
+            <h4
+              className={`italic underline decoration-purple-400 decoration-dashed
+                duration-300 text-2xl w-80 text-center`}
+            >
               Then wait a while for AI Quiz Generator
             </h4>
             <motion.div animate={{ scale: 1.5 }} className="mt-8">
