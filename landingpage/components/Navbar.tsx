@@ -24,7 +24,7 @@ export const Navbar = () => {
         setIsVisible(false);
       }
     }, 50);
-  }, [inView]);
+  }, [inView, scrollY]);
   const toggleMenu = () => {
     setIsMenuOpen((prev) => !prev);
   };

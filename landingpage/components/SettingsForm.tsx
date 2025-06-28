@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
-import { LoadingAnimation } from "./LoadingAnimation";
+
 interface Note {
   uuid: string;
   title: string;
@@ -8,6 +8,7 @@ interface Note {
   preview: string;
   created_at: string;
 }
+
 const defaultNotes: Note[] = [
   {
     uuid: "1a2b3c4d-0001-1234-abcd-000000000001",
@@ -35,51 +36,52 @@ const defaultNotes: Note[] = [
   },
 ];
 
-export const SettingsForm: React.FC<{}> = ({}) => {
-  const [category, setCategory] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-  const finalStepVariants = {
-    visible: { opacity: 1, scale: 1 },
-    hidden: { opacity: 0, scale: 1 },
-  };
+export const SettingsForm: React.FC = () => {
+  const [roomName, setRoomName] = useState("Lorem ipsum");
+  const [category, setCategory] = useState("Lorem ipsum");
+  const [maxRounds, setMaxRounds] = useState(8);
+  const [secForAnswer, setSecForAnswer] = useState(30);
+  const [difficulty, setDifficulty] = useState("easy");
+  const [lang, setLang] = useState("english");
+  const [isPrivate, setIsPrivate] = useState(false);
+
   const finalButtonVariants = {
     clicked: { opacity: 1, scale: [1, 0.9, 1] },
+    hidden: { opacity: 0 },
+    visible: { opacity: 1 },
   };
+
   const controlFinal = useAnimation();
-  const pickedNotes: Note[] = defaultNotes;
+
   useEffect(() => {
     setTimeout(() => {
       controlFinal.start("visible");
       controlFinal.start("clicked");
     }, 3000);
-    setTimeout(() => {
-      setIsLoading(true);
-    }, 7000);
   }, [controlFinal]);
+
   return (
-    <div className="flex  flex-col-reverse items-center gap-2">
-      <form
-        id="settingsForm"
-        className="cartoon-container-transparent bg-amber-100 text-center"
-      >
+    <div className="flex flex-col-reverse items-center gap-2">
+      <div className="cartoon-container-transparent bg-amber-100 text-center">
         <div className="bg-slate-300 flex flex-col gap-2 p-2 rounded-md border border-black">
           <input
-            value={"Lorem ipsum"}
+            value={roomName}
             type="text"
             id="nameInput"
             name="roomName"
             className="cartoon-input"
             placeholder="Room Name"
+            onChange={(e) => setRoomName(e.target.value)}
             required
           />
           <input
-            value={"Lorem ipsum"}
+            value={category}
             type="text"
             id="categoryInput"
             name="category"
-            onChange={(e) => setCategory(e.target.value)}
             className="cartoon-input"
             placeholder="Quiz Category"
+            onChange={(e) => setCategory(e.target.value)}
           />
           <p className="text-xs max-w-sm">
             Enter the category specified for the notes you provided. You can
@@ -89,31 +91,35 @@ export const SettingsForm: React.FC<{}> = ({}) => {
 
           <p>
             <b>Chosen Notes: </b>
-            {pickedNotes.map((n, index) => (
+            {defaultNotes.map((n, index) => (
               <i key={n.uuid}>
                 {n.title}
-                {index !== pickedNotes.length - 1 ? ", " : ""}
+                {index !== defaultNotes.length - 1 ? ", " : ""}
               </i>
             ))}
           </p>
         </div>
-        <div className="flex font-mono flex-row  items-end justify-center gap-4">
+
+        <div className="flex font-mono flex-row items-end justify-center gap-4">
           <div className="flex flex-col">
-            <label className="rounded-lg font-mono text-lg  font-bold underline">
+            <label className="rounded-lg font-mono text-lg font-bold underline">
               Rounds:
             </label>
-            <select id="maxRounds" name="maxRounds" className="cartoon-input">
+            <select
+              id="maxRounds"
+              name="maxRounds"
+              className="cartoon-input"
+              value={maxRounds}
+              onChange={(e) => setMaxRounds(parseInt(e.target.value))}
+            >
               {[...Array(18)].map((_, i) => (
-                <option
-                  key={i}
-                  value={(i + 3).toString()}
-                  className="text-center"
-                >
+                <option key={i} value={i + 3}>
                   {i + 3}
                 </option>
               ))}
             </select>
           </div>
+
           <div className="flex flex-col items-center">
             <label className="rounded-lg text-sm font-bold underline w-24 break-words">
               Time for answer:
@@ -122,29 +128,18 @@ export const SettingsForm: React.FC<{}> = ({}) => {
               id="sec_for_answer"
               name="sec_for_answer"
               className="cartoon-input"
-              defaultValue={30}
+              value={secForAnswer}
+              onChange={(e) => setSecForAnswer(parseInt(e.target.value))}
             >
-              <option value="10" className="text-center">
-                10 sec
-              </option>
-              <option value="15" className="text-center">
-                15 sec
-              </option>
-              <option value="20" className="text-center">
-                20 sec
-              </option>
-              <option value="30" className="text-center">
-                30 sec
-              </option>
-              <option value="45" className="text-center">
-                45 sec
-              </option>
-              <option value="60" className="text-center">
-                60 sec
-              </option>
+              {[10, 20, 30, 40, 50, 60].map((sec) => (
+                <option key={sec} value={sec}>
+                  {sec} sec
+                </option>
+              ))}
             </select>
           </div>
         </div>
+
         <div className="flex font-mono items-center sm:flex-row flex-col gap-4 sm:items-end justify-center">
           <div className="flex flex-col">
             <label className="rounded-lg text-lg font-bold underline">
@@ -154,62 +149,28 @@ export const SettingsForm: React.FC<{}> = ({}) => {
               id="difficulty"
               name="difficulty"
               className="cartoon-input max-w-24"
+              value={difficulty}
+              onChange={(e) => setDifficulty(e.target.value)}
             >
-              <option value="easy" className="text-center">
-                Easy
-              </option>
-              <option value="medium" className="text-center">
-                Medium
-              </option>
-              <option value="hard" className="text-center">
-                Hard
-              </option>
-              <option value="veryhard" className="text-center">
-                Very Hard
-              </option>
+              <option value="easy">Easy</option>
+              <option value="medium">Medium</option>
+              <option value="hard">Hard</option>
+              <option value="veryhard">Very Hard</option>
             </select>
           </div>
+
           <div className="flex flex-col">
             <label className="rounded-lg font-mono text-lg font-bold underline">
               Language:
             </label>
-            <select id="lang" name="lang" className="cartoon-input">
-              <option value="english" className="text-center">
-                English
-              </option>
-              <option value="polish" className="text-center">
-                Polish
-              </option>
-              <option value="spanish" className="text-center">
-                Spanish
-              </option>
-              <option value="french" className="text-center">
-                French
-              </option>
-              <option value="german" className="text-center">
-                German
-              </option>
-              <option value="italian" className="text-center">
-                Italian
-              </option>
-              <option value="portuguese" className="text-center">
-                Portuguese
-              </option>
-              <option value="russian" className="text-center">
-                Russian
-              </option>
-              <option value="chinese" className="text-center">
-                Chinese
-              </option>
-              <option value="japanese" className="text-center">
-                Japanese
-              </option>
-              <option value="korean" className="text-center">
-                Korean
-              </option>
-              <option value="arabic" className="text-center">
-                Arabic
-              </option>
+            <select
+              id="lang"
+              name="lang"
+              className="cartoon-input"
+              value={lang}
+              onChange={(e) => setLang(e.target.value)}
+            >
+              <option value="english">English</option>
             </select>
           </div>
         </div>
@@ -221,13 +182,15 @@ export const SettingsForm: React.FC<{}> = ({}) => {
               id="isPrivate"
               name="isPrivate"
               className="w-5 h-5 accent-teal-600"
+              checked={isPrivate}
+              onChange={(e) => setIsPrivate(e.target.checked)}
             />
             <label htmlFor="isPrivate" className="ml-2 text-lg font-bold">
               Private Room
             </label>
           </span>
           <p className="text-xs font-extralight">
-            (The room won't appear on the room list)
+            (The room won&apos;t appear on the room list)
           </p>
         </div>
 
@@ -240,7 +203,7 @@ export const SettingsForm: React.FC<{}> = ({}) => {
         >
           Create
         </motion.button>
-      </form>
+      </div>
     </div>
   );
 };

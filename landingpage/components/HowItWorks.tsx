@@ -1,30 +1,17 @@
 import Image from "next/image";
-import { BiWindows } from "react-icons/bi";
-import { HiOutlineCursorClick } from "react-icons/hi";
-import { IoMdRefresh } from "react-icons/io";
-import { TypeAnimation } from "react-type-animation";
-import { animate, delay, motion, useAnimation } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { useEffect, useLayoutEffect } from "react";
+import { useEffect } from "react";
 import { LoadingAnimation } from "./LoadingAnimation";
 import { Dashboard } from "./Dashboard";
 import { SettingsForm } from "./SettingsForm";
 
 export const HowItWorks = () => {
   const controlBrowser = useAnimation();
-  const [refBrowser, inViewBrowser] = useInView();
   const browserVariants = {
     visible: { opacity: 1, scale: 1, x: 0, y: 0 },
-    hidden: { opacity: 0, scale: 1, x: 0, y: [-200] },
+    hidden: { opacity: 0, scale: 1, x: 0, y: -100 },
   };
-  useEffect(() => {
-    if (inView) {
-      controlBrowser.start("visible");
-    } else {
-      controlBrowser.start("hidden");
-    }
-    console.log(inView);
-  }, [controlBrowser, inViewBrowser]);
 
   const control = useAnimation();
   const [ref, inView] = useInView();
@@ -52,11 +39,9 @@ export const HowItWorks = () => {
   };
   const finalStepVariants = {
     visible: { opacity: 1, scale: 1, y: 0, rotate: 0 },
-    hidden: { opacity: 0, scale: 0, y: -200, rotate: [-180] },
+    hidden: { opacity: 0, scale: 0, y: -200, rotate: -240 },
   };
-  const finalButtonVariants = {
-    clicked: { opacity: 1, scale: [1, 0.9, 1] },
-  };
+
   useEffect(() => {
     if (inView) {
       control.start("visible1");
@@ -77,7 +62,7 @@ export const HowItWorks = () => {
     <section
       id="offer"
       className="h-auto bg-noise3 flex flex-col 
-        w-full pb-24 lg:px-0 px-4
+        w-full pb-24 lg:px-0 px-4 bg-slate-500 bg-opacity-10
         justify-start items-center 
        "
     >
@@ -88,7 +73,7 @@ export const HowItWorks = () => {
         How it Works?
       </motion.h2>
       <div
-        className="bg-white bg-opacity-5 rounded-xl pb-4 px-4 flex flex-col 
+        className="pb-4 px-4 flex flex-col 
       md:max-w-6xl w-full items-start justify-start gap-4"
       >
         <div className="flex md:flex-row flex-col w-full  justify-between items-end my-0 gap-0">
@@ -191,7 +176,6 @@ export const HowItWorks = () => {
           className="brightness-0 rounded-xl h-32 w-32 self-center opacity-80 mr-40"
         />
         <div
-          ref={refBrowser}
           className="flex flex-row-reverse justify-center 
         items-center m-auto w-full"
         >
@@ -212,7 +196,7 @@ export const HowItWorks = () => {
               initial="hidden"
               animate={controlBrowser}
               whileInView="visible"
-              transition={{ duration: 1, ease: "easeOut", delay: 0.5 }}
+              transition={{ duration: 1.2, ease: "easeOut", delay: 1 }}
               className="self-center"
             >
               <SettingsForm />
@@ -228,6 +212,12 @@ export const HowItWorks = () => {
             className="brightness-0  translate-x-32 rotate-12 rounded-xl h-32 w-32 
             self-center opacity-80 "
           />
+          <h4
+            className={`italic underline decoration-red-500 decoration-dashed
+                duration-300 text-2xl w-80 text-center`}
+          >
+            Then wait a while for AI Quiz Generator
+          </h4>
           <motion.div
             variants={loadingVariants}
             initial="hidden"
@@ -236,12 +226,6 @@ export const HowItWorks = () => {
             transition={{ duration: 0.4, ease: "easeOut" }}
             className="self-center  py-8"
           >
-            <h4
-              className={`italic underline decoration-purple-400 decoration-dashed
-                duration-300 text-2xl w-80 text-center`}
-            >
-              Then wait a while for AI Quiz Generator
-            </h4>
             <motion.div animate={{ scale: 1.5 }} className="mt-8">
               <LoadingAnimation />
             </motion.div>
@@ -269,7 +253,7 @@ export const HowItWorks = () => {
               initial="hidden"
               animate={controlFinal}
               whileInView="visible"
-              transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
+              transition={{ duration: 0.6, delay: 1.2, ease: "easeOut" }}
               className=" "
             >
               <Dashboard />

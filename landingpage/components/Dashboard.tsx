@@ -1,9 +1,8 @@
-import React, { useState, FormEvent, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 import { RxLapTimer } from "react-icons/rx";
 import { IoCheckmark } from "react-icons/io5";
 import { LuSend } from "react-icons/lu";
-import { motion } from "framer-motion";
 
 export const LittlePaperWrapper = ({
   children,
@@ -114,7 +113,7 @@ const defaultSettings: Settings = {
   is_premium: false,
   is_notes_based: false,
 };
-export const Dashboard: React.FC<{}> = ({}) => {
+export const Dashboard = () => {
   const settings = defaultSettings;
   const gameState = defaultGameState;
   const serverMessage = "Have a good game";

@@ -12,14 +12,14 @@ export const LoadingAnimation = ({
 }) => {
   return (
     <div className="gap-1 flex  flex-col items-center scale-150 my-4">
-      <div className="flex items-center gap-2 mr-10">
+      <div className="flex items-center gap-2 mr-10 scale-110">
         <motion.div
           color={"black"}
           animate={{
             x: [-10, 10, 100, 100, 100],
             rotate: [0],
             transition: {
-              duration: 2,
+              duration: 2.5,
               delay: 0.5,
               repeat: Infinity,
               ease: "linear",
@@ -33,7 +33,7 @@ export const LoadingAnimation = ({
               scale: [0, 0, 1, 1, 1],
               rotate: [0],
               transition: {
-                duration: 2,
+                duration: 2.5,
                 delay: 0.5,
                 repeat: Infinity,
                 ease: "linear",
@@ -49,7 +49,7 @@ export const LoadingAnimation = ({
               scale: [1, 1, 0, 0, 0],
               rotate: [0],
               transition: {
-                duration: 2,
+                duration: 2.5,
                 delay: 0.5,
                 repeat: Infinity,
                 ease: "linear",
@@ -67,7 +67,7 @@ export const LoadingAnimation = ({
               y: [0],
               rotate: [0, 180, 360],
               transition: {
-                duration: 2,
+                duration: 2.5,
                 delay: 0,
                 repeat: Infinity,
                 ease: "linear",
