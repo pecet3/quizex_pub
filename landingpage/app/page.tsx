@@ -13,7 +13,7 @@ export default function Home() {
   const [ref1, inView1] = useInView({ triggerOnce: false, threshold: 0.5 });
   const [ref2, inView2] = useInView({ triggerOnce: false, threshold: 0.5 });
   const [ref3, inView3] = useInView({ triggerOnce: false, threshold: 0.5 });
-
+  console.log("hello hacker :)");
   return (
     <main className=" flex flex-col items-center justify-center mb-32">
       <motion.section

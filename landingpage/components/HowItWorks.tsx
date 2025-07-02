@@ -56,7 +56,6 @@ export const HowItWorks = () => {
       controlFinal.start("visible");
       controlFinal.start("clicked");
     }
-    console.log(inFinalView, true);
   }, [controlFinal, inFinalView]);
   return (
     <section
