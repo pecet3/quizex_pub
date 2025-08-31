@@ -54,7 +54,7 @@ export default function Home() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ delay: 1.5, duration: 0.3 }}
           >
-            <motion.button
+            {/* <motion.button
               whileHover={{ scale: 1.15, rotate: 0 }}
               whileTap={{ scale: 1 }}
               color={"black"}
@@ -76,6 +76,30 @@ export default function Home() {
                 className="flex items-center gap-2 font-mono text-xl sm:text-2xl"
               >
                 <FaRegCirclePlay size={32} color="black" /> Play
+              </Link>
+            </motion.button> */}
+            <motion.button
+              // whileHover={{ scale: 1.15, rotate: 0 }}
+              // whileTap={{ scale: 1 }}
+              // color={"black"}
+              // animate={{
+              //   y: [0],
+              //   scale: [1, 1.1, 1],
+              //   rotate: [0],
+              //   transition: {
+              //     duration: 2.2,
+              //     delay: 1,
+              //     repeat: Infinity,
+              //     ease: "linear",
+              //   },
+              // }}
+              className="bg-teal-100 font-mono play-button "
+            >
+              <Link
+                href={links.app}
+                className="tracking-widest mx-4 flex items-center  font-mono text-xl sm:text-2xl"
+              >
+                Play
               </Link>
             </motion.button>
           </motion.div>

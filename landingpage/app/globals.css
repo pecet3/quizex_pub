@@ -3,7 +3,6 @@
 @tailwind utilities;
 
 :root {
-  background-image: url("../public/noise.png");
   background-repeat: repeat;
   -moz-osx-font-smoothing: grayscale;
     --pink: #ecb2ba;
@@ -15,7 +14,6 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    background-image: url("../public/noise.png");
     background-repeat: repeat;
   }
 }
@@ -23,6 +21,44 @@
 body {
   color: var(--foreground);
   background: var(--background);
+}
+.play-button {
+  padding: 1em 2em;
+  border: none;
+  border-radius: 30px;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  color: black;
+  transition: all 1000ms;
+  font-size: 15px;
+  position: relative;
+  overflow: hidden;
+  outline: 2px solid #000000;
+}
+
+.play-button:hover {
+  color: #ffffff;
+  transform: scale(1.1);
+  outline: 2px solid #70bdca;
+  box-shadow: 4px 5px 17px -4px #268391;
+}
+
+.play-button::before {
+  content: "";
+  position: absolute;
+  left: -50px;
+  top: 0;
+  width: 0;
+  height: 100%;
+  background-color: #5eead4;
+  transform: skewX(45deg);
+  z-index: -1;
+  transition: width 1000ms;
+}
+
+.play-button:hover::before {
+  width: 250%;
 }
 
 @layer utilities {
@@ -45,11 +81,10 @@ body {
 
 .bg-pattern {
   background-color: #e0e0e0;
-  background-image: linear-gradient(#a7aae7 1px, transparent 1px),
-    linear-gradient(to right, #9498ec 1px, #f4f4f7 1px);
+  background-image: linear-gradient(#d8d9e2 1px, transparent 1px),
+    linear-gradient(to right, rgb(195, 197, 240) 1px, #f4f4f7 1px);
   background-size: 20px 20px;
 }
-
 .bg-second-paper {
   background-color: #e5e5f7;
   background-size: 20px 20px;
